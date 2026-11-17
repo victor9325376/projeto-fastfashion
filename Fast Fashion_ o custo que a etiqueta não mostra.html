@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fast Fashion: o custo que a etiqueta não mostra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F6F4; --surface:#FFFFFF; --ink:#14213D; --muted:#4B5570;
+  --dye:#C4235F; --line:#D5D9D2; --river:#2B5C8A;
+  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1524; --surface:#18203A; --ink:#EEF0F5; --muted:#A9B1C7;
+    --dye:#FF6BA0; --line:#2B3555; --river:#7FB2E5; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1524; --surface:#18203A; --ink:#EEF0F5; --muted:#A9B1C7;
+  --dye:#FF6BA0; --line:#2B3555; --river:#7FB2E5; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.7}
+h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0}
+a{color:var(--dye)}
+:focus-visible{outline:3px solid var(--dye);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+section{padding:4.5rem 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-bottom:1.25rem;max-width:20ch}
+p{max-width:62ch;margin:0 0 1rem}
+nav{display:flex;gap:1.25rem;flex-wrap:wrap;padding:1.1rem 0;font-family:var(--head);font-weight:500;font-size:1rem}
+nav a{color:var(--ink);text-decoration:none}
+nav a:hover{color:var(--dye)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center;padding:3rem 0 5rem;border:0}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.02em}
+.hero p{font-size:1.25rem;color:var(--muted);margin-top:1.5rem}
+.tag{position:relative;background:var(--surface);border:2px solid var(--ink);border-radius:6px 6px 18px 18px;padding:3.2rem 1.5rem 1.5rem;
+  transform:rotate(3deg);box-shadow:8px 8px 0 var(--dye);font-family:var(--head)}
+.tag::before{content:"";position:absolute;top:1rem;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:2px solid var(--ink);background:var(--bg)}
+.tag small{display:block;font-size:.85rem;color:var(--muted);font-weight:500}
+.price{font-size:3.4rem;font-weight:800;line-height:1;margin:.3rem 0 1rem}
+.tag ul{list-style:none;margin:0 0 1.2rem;padding:0;font-family:var(--body);font-size:1rem;line-height:1.45}
+.tag li{padding:.45rem 0;border-bottom:1px dashed var(--line)}
+.tag button{font:inherit;font-weight:800;font-size:.95rem;background:var(--ink);color:var(--bg);border:0;padding:.7rem 1rem;border-radius:999px;cursor:pointer}
+.tag button:hover{background:var(--dye);color:#fff}
+[hidden]{display:none!important}
+
+/* Dados */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:2rem}
+.fact{border-left:4px solid var(--river);padding-left:1rem}
+.fact strong{display:block;font-family:var(--head);font-size:1.5rem;line-height:1.15;margin-bottom:.35rem}
+.fact span{font-size:1rem;color:var(--muted);line-height:1.5;display:block}
+
+/* Impactos */
+.impacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem}
+.impacts h3{font-size:1.4rem;margin-bottom:.6rem;color:var(--dye)}
+.impacts p{font-size:1.05rem}
+
+/* Soluções */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0}
+.tabs button{font:inherit;font-family:var(--head);font-weight:500;font-size:1rem;padding:.65rem 1.1rem;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.75rem}
+.panel ul{margin:0;padding-left:1.2rem}
+.panel li{margin-bottom:.7rem;max-width:62ch}
+
+/* Checklist */
+.check{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.6rem;max-width:62ch}
+.check label{display:flex;gap:.8rem;align-items:flex-start;cursor:pointer}
+.check input{width:1.3rem;height:1.3rem;margin-top:.3rem;accent-color:var(--dye);flex:none}
+.check input:checked + span{text-decoration:line-through;color:var(--muted)}
+#score{font-family:var(--head);font-weight:800;font-size:1.2rem;margin-top:1.2rem}
+
+footer{padding:2.5rem 0 3.5rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+footer p{max-width:70ch}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;gap:2.5rem;padding-top:1.5rem}
+  .tag{transform:rotate(1.5deg);margin-right:8px}
+  section{padding:3.2rem 0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .tag{animation:swing 1.4s ease-out 1}
+  @keyframes swing{0%{transform:rotate(-8deg)}60%{transform:rotate(5deg)}100%{transform:rotate(3deg)}}
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <nav aria-label="Principal">
+    <a href="#oque">O que é</a>
+    <a href="#impactos">Impactos</a>
+    <a href="#solucoes">Soluções</a>
+    <a href="#agir">Comece hoje</a>
+  </nav>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Fast Fashion: o custo que a etiqueta não mostra</h1>
+      <p>Roupa barata, coleções que mudam toda semana e um armário cheio. Veja quem paga a conta e o que dá para fazer a respeito.</p>
+    </div>
+    <div class="tag" aria-live="polite">
+      <div id="tag-front">
+        <small>Preço da etiqueta</small>
+        <div class="price">R$ 29,90</div>
+        <button type="button" data-flip>Ver o que não está escrito</button>
+      </div>
+      <div id="tag-back" hidden>
+        <small>O que a etiqueta não mostra</small>
+        <ul>
+          <li>Água usada no cultivo e no tingimento</li>
+          <li>Rios poluídos perto das fábricas</li>
+          <li>Costureiras com salários baixos e jornadas longas</li>
+          <li>Peça descartada depois de poucos usos</li>
+        </ul>
+        <button type="button" data-flip>Voltar ao preço</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="oque">
+  <div class="wrap">
+    <h2>O que é Fast Fashion</h2>
+    <p>É o modelo de produção de moda que copia tendências rapidamente e as coloca nas lojas a preços baixos. Em vez de duas ou quatro coleções por ano, algumas marcas lançam novidades quase toda semana.</p>
+    <p>O objetivo é fazer a pessoa comprar mais vezes. A roupa é feita para ser usada poucas vezes, e isso só funciona porque grande parte dos custos ambientais e humanos não entra no preço.</p>
+    <div class="facts">
+      <div class="fact"><strong>Produção dobrou</strong><span>A produção mundial de roupas mais que dobrou entre 2000 e 2015, segundo a Ellen MacArthur Foundation.</span></div>
+      <div class="fact"><strong>Menos de 1%</strong><span>É a parcela de roupas recicladas em novas roupas, segundo a mesma organização.</span></div>
+      <div class="fact"><strong>Cerca de 2.700 litros</strong><span>É a água estimada para produzir uma camiseta de algodão, segundo a WWF.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="impactos">
+  <div class="wrap">
+    <h2>Quem paga a conta</h2>
+    <div class="impacts">
+      <article>
+        <h3>Meio ambiente</h3>
+        <p>O tingimento e o acabamento lançam efluentes em rios, e tecidos sintéticos soltam microplásticos a cada lavagem. Roupas descartadas se acumulam em aterros e até em desertos, como o Atacama, no Chile.</p>
+      </article>
+      <article>
+        <h3>Trabalhadores</h3>
+        <p>Muitas peças saem de fábricas com salários baixos e jornadas exaustivas. Em 2013, o desabamento do edifício Rana Plaza, em Bangladesh, matou mais de mil trabalhadores do setor têxtil.</p>
+      </article>
+      <article>
+        <h3>Consumidores</h3>
+        <p>A qualidade menor faz a peça durar pouco. Gastar um pouco a cada semana parece barato, mas soma muito ao fim do ano e gera lixo em ritmo igual.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="solucoes">
+  <div class="wrap">
+    <h2>O que pode mudar</h2>
+    <p>Não existe uma solução única. As mudanças funcionam melhor quando acontecem nos três níveis ao mesmo tempo.</p>
+    <div class="tabs" role="tablist" aria-label="Soluções por nível">
+      <button role="tab" id="t0" aria-selected="true" aria-controls="p0">Consumidores</button>
+      <button role="tab" id="t1" aria-selected="false" aria-controls="p1" tabindex="-1">Indústria</button>
+      <button role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1">Governo e sociedade</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0">
+      <ul>
+        <li>Compre menos e escolha peças duráveis, que combinem com o que você já tem.</li>
+        <li>Prefira brechós, trocas entre amigos e aluguel de roupas.</li>
+        <li>Conserte, customize e lave com cuidado para a peça durar mais.</li>
+        <li>Pergunte quem fez a roupa. Pressão de consumidores muda o comportamento das marcas.</li>
+      </ul>
+    </div>
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
+      <ul>
+        <li>Adotar economia circular: desenhar peças para durar, serem consertadas e recicladas.</li>
+        <li>Usar materiais reciclados, orgânicos ou de menor impacto.</li>
+        <li>Publicar a lista de fornecedores e os resultados de auditorias.</li>
+        <li>Pagar salários justos e garantir segurança nas fábricas.</li>
+      </ul>
+    </div>
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <ul>
+        <li>Criar leis de responsabilidade estendida: a marca responde pelo destino da peça depois da venda.</li>
+        <li>Reforçar a fiscalização trabalhista na cadeia têxtil.</li>
+        <li>Incentivar coleta seletiva e reciclagem de têxteis.</li>
+        <li>Investir em educação sobre consumo consciente nas escolas.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="agir">
+  <div class="wrap">
+    <h2>Comece pelo seu armário</h2>
+    <p>Marque o que você já faz ou quer fazer neste mês.</p>
+    <ul class="check" id="check">
+      <li><label><input type="checkbox"><span>Esperar 30 dias antes de comprar algo por impulso</span></label></li>
+      <li><label><input type="checkbox"><span>Visitar um brechó ou uma feira de troca</span></label></li>
+      <li><label><input type="checkbox"><span>Consertar uma peça parada no armário</span></label></li>
+      <li><label><input type="checkbox"><span>Doar o que não uso mais, em bom estado</span></label></li>
+      <li><label><input type="checkbox"><span>Ler a etiqueta e escolher o tecido antes do preço</span></label></li>
+    </ul>
+    <div id="score" aria-live="polite">0 de 5 ações marcadas</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Fontes para aprofundar: Ellen MacArthur Foundation (<em>A New Textiles Economy</em>), Fashion Revolution, WWF e relatórios da ONU sobre moda e meio ambiente. Os números citados são estimativas e podem variar entre estudos.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var front=document.getElementById('tag-front'), back=document.getElementById('tag-back');
+  document.querySelectorAll('[data-flip]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var showBack=back.hidden;
+      back.hidden=!showBack; front.hidden=showBack;
+      (showBack?back:front).querySelector('button').focus();
+    });
+  });
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(i){
+    tabs.forEach(function(t,n){
+      var on=n===i;
+      t.setAttribute('aria-selected',on);
+      t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(i)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight')select((i+1)%tabs.length);
+      if(e.key==='ArrowLeft')select((i+tabs.length-1)%tabs.length);
+    });
+  });
+  var boxes=document.querySelectorAll('#check input'), score=document.getElementById('score');
+  boxes.forEach(function(b){
+    b.addEventListener('change',function(){
+      var n=document.querySelectorAll('#check input:checked').length;
+      score.textContent=n+' de 5 ações marcadas'+(n===5?'. Seu armário agradece!':'');
+    });
+  });
+})();
+</script>
+</body>
+</html>
