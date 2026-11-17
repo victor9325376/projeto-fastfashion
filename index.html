@@ -8,149 +8,178 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F5F6F4;--surface:#fff;--ink:#14213D;--muted:#4B5570;--dye:#C4235F;--river:#2B5C8A;--leaf:#3F7D58;--line:#D5D9D2;
+:root{--bg:#F6F7FB;--surface:#fff;--ink:#0B1437;--muted:#4A5575;--line:#DDE1EE;--navy:#0B1437;
+--pink:#E6176F;--cyan:#008FA3;--sun:#F5A300;--green:#14975A;--btn-ink:#fff;
 --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Source Serif 4",Georgia,serif;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F1524;--surface:#18203A;--ink:#EEF0F5;--muted:#A9B1C7;--dye:#FF6BA0;--river:#7FB2E5;--leaf:#6FCB93;--line:#2B3555;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0F1524;--surface:#18203A;--ink:#EEF0F5;--muted:#A9B1C7;--dye:#FF6BA0;--river:#7FB2E5;--leaf:#6FCB93;--line:#2B3555;color-scheme:dark}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0A0F26;--surface:#141B3D;--ink:#F1F3FA;--muted:#AEB6D3;--line:#27305C;--pink:#FF4C9A;--cyan:#27D3E6;--sun:#FFC83D;--green:#3DDC97;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A0F26;--surface:#141B3D;--ink:#F1F3FA;--muted:#AEB6D3;--line:#27305C;--pink:#FF4C9A;--cyan:#27D3E6;--sun:#FFC83D;--green:#3DDC97;color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.65}
 h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0}
-:focus-visible{outline:3px solid var(--dye);outline-offset:3px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
-section{padding:4rem 0;border-top:1px solid var(--line)}
-h2{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin-bottom:.8rem}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 1.25rem}
+section{padding:4.5rem 0}
+h2{font-size:clamp(2rem,4.8vw,2.9rem);font-weight:800;margin-bottom:.7rem;letter-spacing:-.01em}
 .lead{color:var(--muted);max-width:56ch;margin:0 0 2rem}
-nav{display:flex;gap:1.25rem;flex-wrap:wrap;padding:1.1rem 0;font-family:var(--head);font-weight:500}
-nav a{color:var(--ink);text-decoration:none}nav a:hover{color:var(--dye)}
-[hidden]{display:none!important}
-svg{display:block}
+[hidden]{display:none!important}svg{display:block}
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:var(--pink);z-index:60}
+header.bar{position:sticky;top:0;z-index:50;background:var(--navy);padding-top:env(safe-area-inset-top,0px)}
+header.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.7rem;padding-bottom:.7rem}
+.logo{font-family:var(--head);font-weight:800;color:#fff;font-size:1.1rem}
+nav{display:flex;gap:.3rem;flex-wrap:wrap;font-family:var(--head);font-weight:500;font-size:.95rem}
+nav a{color:#C9D0EE;text-decoration:none;padding:.4rem .8rem;border-radius:999px}
+nav a:hover{color:#fff}nav a.on{background:var(--pink);color:#fff}
+#theme{font:inherit;font-family:var(--head);font-size:.85rem;background:transparent;color:#fff;border:1.5px solid #5A66A0;border-radius:999px;padding:.35rem .8rem;cursor:pointer}
+#theme:hover{border-color:var(--sun);color:var(--sun)}
 
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center;padding:2.5rem 0 4.5rem;border:0}
+.hero{background:var(--navy);color:#fff;padding:3.5rem 0 5rem;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-90px;bottom:-110px;width:340px;height:340px;border-radius:50%;background:var(--pink);opacity:.9}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center;position:relative;z-index:1}
 .hero h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;letter-spacing:-.02em}
-.hero p{font-size:1.25rem;color:var(--muted);margin:1.4rem 0 1.6rem;max-width:44ch}
-.btn{display:inline-block;font-family:var(--head);font-weight:800;background:var(--dye);color:#fff;text-decoration:none;padding:.85rem 1.4rem;border-radius:999px}
-.btn:hover{background:var(--ink);color:var(--bg)}
-.tag{position:relative;background:var(--surface);border:2px solid var(--ink);border-radius:6px 6px 18px 18px;padding:3.2rem 1.5rem 1.5rem;transform:rotate(3deg);box-shadow:8px 8px 0 var(--dye);font-family:var(--head)}
-.tag::before{content:"";position:absolute;top:1rem;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:2px solid var(--ink);background:var(--bg)}
-.tag small{display:block;font-size:.85rem;color:var(--muted);font-weight:500}
+.hero p{font-size:1.25rem;color:#C9D0EE;margin:1.4rem 0 1.8rem;max-width:44ch}
+.btn{display:inline-block;font-family:var(--head);font-weight:800;background:var(--sun);color:#0B1437;text-decoration:none;padding:.9rem 1.5rem;border-radius:999px;border:0;cursor:pointer;font-size:1rem}
+.btn:hover{background:#fff}
+.tag{position:relative;background:#fff;color:#0B1437;border:2px solid #0B1437;border-radius:6px 6px 18px 18px;padding:3.2rem 1.5rem 1.5rem;transform:rotate(3deg);box-shadow:8px 8px 0 var(--sun);font-family:var(--head)}
+.tag::before{content:"";position:absolute;top:1rem;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:2px solid #0B1437;background:var(--navy)}
+.tag small{display:block;font-size:.85rem;color:#4A5575;font-weight:500}
 .price{font-size:3.4rem;font-weight:800;line-height:1;margin:.3rem 0 1rem}
 .tag ul{list-style:none;margin:0 0 1.2rem;padding:0;font-family:var(--body);font-size:1rem;line-height:1.4}
-.tag li{padding:.45rem 0 .45rem 2rem;border-bottom:1px dashed var(--line);position:relative}
+.tag li{padding:.45rem 0 .45rem 2rem;border-bottom:1px dashed #C8CDE0;position:relative}
 .tag li svg{position:absolute;left:0;top:.4rem}
-.tag button{font:inherit;font-weight:800;font-size:.95rem;background:var(--ink);color:var(--bg);border:0;padding:.7rem 1rem;border-radius:999px;cursor:pointer}
-.tag button:hover{background:var(--dye);color:#fff}
+.tag button{font:inherit;font-weight:800;font-size:.95rem;background:#0B1437;color:#fff;border:0;padding:.7rem 1rem;border-radius:999px;cursor:pointer}
+.tag button:hover{background:var(--pink)}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem}
-.pain{display:flex;gap:1rem;align-items:flex-start}
-.pain .ic{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--river)}
-.pain h3{font-size:1.2rem;margin-bottom:.2rem}.pain p{margin:0;font-size:1rem;color:var(--muted);line-height:1.45}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.pain{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem}
+.pain .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin-bottom:.9rem;color:#fff}
+.pain h3{font-size:1.25rem;margin-bottom:.3rem}.pain p{margin:0;font-size:1rem;color:var(--muted);line-height:1.5}
+.pain .big{font-family:var(--head);font-weight:800;font-size:2.2rem;line-height:1;margin-top:.8rem;color:var(--c)}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.card{background:var(--surface);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:14px;padding:1.6rem}
-.card .ic{width:72px;height:72px;border-radius:50%;background:var(--c);display:grid;place-items:center;margin:0 auto 1rem}
-.card h3{text-align:center;font-size:1.4rem;margin-bottom:1rem}
-.card ul{list-style:none;margin:0;padding:0;font-size:1.02rem;line-height:1.4}
-.card li{display:flex;gap:.7rem;padding:.55rem 0}
+.band{background:var(--navy);color:#fff}
+.band .lead{color:#C9D0EE}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;align-items:start}
+.card{background:var(--surface);color:var(--ink);border-radius:16px;overflow:hidden}
+.card .top{background:var(--c);padding:1.4rem;text-align:center;color:#fff}
+.card .ic{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;margin:0 auto .6rem}
+.card h3{font-size:1.4rem}
+.card ul{list-style:none;margin:0;padding:1rem 1.4rem .4rem;font-size:1.02rem;line-height:1.4}
+.card li{display:flex;gap:.7rem;padding:.5rem 0}
 .card li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--c);margin-top:.5rem}
+.card details{padding:0 1.4rem 1.2rem}
+.card summary{cursor:pointer;font-family:var(--head);font-weight:800;color:var(--c);padding:.4rem 0;list-style:none}
+.card summary::-webkit-details-marker{display:none}
+.card summary::after{content:" +"}.card details[open] summary::after{content:" \2212"}
+.card details p{margin:.5rem 0 0;font-size:1rem;color:var(--muted);line-height:1.5}
 
-.pairs{display:grid;gap:.7rem}
-.pair{display:grid;grid-template-columns:1fr auto 1.4fr;gap:.8rem;align-items:stretch}
+.pairs{display:grid;gap:.7rem;margin-top:1rem}
+.pair{display:grid;grid-template-columns:1fr auto 1.4fr;gap:.8rem}
 .pair div{padding:.9rem 1.1rem;border-radius:10px;font-family:var(--head);font-weight:500;display:flex;align-items:center}
-.pair .p{background:var(--surface);border:1px solid var(--line)}
+.pair .p{background:var(--surface);color:var(--ink)}
 .pair .s{background:var(--c);color:#fff}
-.pair .arr{align-self:center;padding:0;font-size:1.6rem;color:var(--c);background:none}
+.pair .arr{align-self:center;padding:0;font-size:1.6rem;color:var(--c)}
 @media (max-width:640px){.pair{grid-template-columns:1fr}.pair .arr{transform:rotate(90deg);justify-self:center}}
 
-.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.calc label{display:block;font-family:var(--head);font-weight:500;margin-bottom:1rem}
-.calc input[type=range]{width:100%;accent-color:var(--dye)}
-.calc output{font-weight:800;color:var(--dye)}
-.res{border-left:4px solid var(--dye);padding-left:1.2rem;align-self:center}
-.res strong{font-family:var(--head);font-size:2.6rem;display:block;line-height:1}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.calc label{display:block;font-family:var(--head);font-weight:500;margin-bottom:.8rem}
+.calc input[type=range]{width:100%;accent-color:var(--pink)}
+.calc output{font-weight:800;color:var(--pink)}
+.res{border-left:5px solid var(--pink);padding-left:1.2rem;align-self:center}
+.res strong{font-family:var(--head);font-size:3rem;display:block;line-height:1}
 .res span{color:var(--muted);font-size:1rem}
 @media (max-width:700px){.calc{grid-template-columns:1fr;gap:1.2rem}}
 
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.8rem;max-width:720px}
+.qmeta{font-family:var(--head);color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.qtext{font-family:var(--head);font-weight:800;font-size:1.4rem;line-height:1.25;margin-bottom:1.2rem}
+.qopts{display:flex;gap:.8rem;flex-wrap:wrap}
+.qopts button{font:inherit;font-family:var(--head);font-weight:800;padding:.75rem 1.6rem;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.qopts button:hover:not(:disabled){background:var(--ink);color:var(--bg)}
+.qopts button.ok{background:var(--green);border-color:var(--green);color:#fff}
+.qopts button.no{background:var(--pink);border-color:var(--pink);color:#fff}
+.qfb{margin:1.1rem 0 0;font-size:1rem;color:var(--muted);min-height:3em}
+.qnext{margin-top:1rem}
+
 .check{list-style:none;padding:0;margin:0;display:grid;gap:.6rem;max-width:60ch}
 .check label{display:flex;gap:.8rem;align-items:flex-start;cursor:pointer}
-.check input{width:1.3rem;height:1.3rem;margin-top:.3rem;accent-color:var(--dye);flex:none}
+.check input{width:1.3rem;height:1.3rem;margin-top:.3rem;accent-color:var(--green);flex:none}
 .check input:checked + span{text-decoration:line-through;color:var(--muted)}
-.bar{height:12px;background:var(--line);border-radius:99px;margin:1.4rem 0 .6rem;max-width:60ch;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--leaf);transition:width .3s}
+.meter{height:14px;background:var(--line);border-radius:99px;margin:1.4rem 0 .6rem;max-width:60ch;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--green);transition:width .35s}
 #score{font-family:var(--head);font-weight:800}
-footer{padding:2.2rem 0 3.5rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
-@media (max-width:760px){.hero{grid-template-columns:1fr;gap:2.5rem;padding-top:1rem}.tag{transform:rotate(1.5deg);margin-right:8px}section{padding:3rem 0}}
+footer{background:var(--navy);color:#C9D0EE;padding:2.5rem 0 3.5rem;font-size:.95rem}
+footer strong{display:block;font-family:var(--head);font-size:1.15rem;color:#fff;margin-top:1rem}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;gap:2.5rem}.tag{transform:rotate(1.5deg);margin-right:8px}nav{display:none}section{padding:3.2rem 0}}
 @media (prefers-reduced-motion:no-preference){.tag{animation:swing 1.4s ease-out 1}@keyframes swing{0%{transform:rotate(-8deg)}60%{transform:rotate(5deg)}100%{transform:rotate(3deg)}}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meter i{transition:none}}
 </style>
 </head>
 <body>
+<div id="prog" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-drop" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C9 7 5 10.5 5 15a7 7 0 0014 0c0-4.500-4-8-7-13z"/></symbol>
   <symbol id="i-people" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="currentColor"/><path fill="currentColor" d="M4 21c0-5 4-7 8-7s8 2 8 7z"/></symbol>
   <symbol id="i-bin" viewBox="0 0 24 24"><path fill="currentColor" d="M5 7h14l-1.200 14H6.200zM9 3h6l1 2H8z"/></symbol>
   <symbol id="i-factory" viewBox="0 0 24 24"><path fill="currentColor" d="M2 21V10l6 4v-4l6 4v-4l6 4V5h3v16z" transform="scale(.9) translate(1 1)"/></symbol>
   <symbol id="i-gov" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L2 8v2h20V8zM4 11v8h3v-8zm5 0v8h3v-8zm5 0v8h3v-8zM2 20v2h20v-2z" transform="translate(1 0) scale(.92)"/></symbol>
-  <symbol id="i-wallet" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6a2 2 0 012-2h13v3H5v1h16v11a2 2 0 01-2 2H5a2 2 0 01-2-2zm14 8a1.500 1.500 0 100 3 1.500 1.500 0 000-3z"/></symbol>
 </svg>
 
-<header class="wrap"><nav aria-label="Principal">
-  <a href="#problema">O problema</a><a href="#solucoes">Soluções</a><a href="#calculadora">Calculadora</a><a href="#agir">Comece hoje</a>
-</nav></header>
+<header class="bar"><div class="wrap">
+  <span class="logo">Fast Fashion</span>
+  <nav aria-label="Principal"><a href="#problema">Problema</a><a href="#solucoes">Soluções</a><a href="#calculadora">Calculadora</a><a href="#quiz">Quiz</a><a href="#agir">Comece hoje</a></nav>
+  <button id="theme" type="button" aria-pressed="false">Modo escuro</button>
+</div></header>
 
 <main>
-<div class="wrap hero">
+<div class="hero"><div class="wrap">
   <div>
-    <h1>Fast Fashion: o custo que a etiqueta não mostra</h1>
-    <p>Roupa barata tem um preço escondido. Veja o problema em poucos passos e, principalmente, o que dá para fazer.</p>
+    <h1>O custo que a etiqueta não mostra</h1>
+    <p>Roupa barata tem um preço escondido. Entenda o problema do Fast Fashion e descubra o que cada pessoa pode fazer.</p>
     <a class="btn" href="#solucoes">Ver as soluções</a>
   </div>
   <div class="tag" aria-live="polite">
-    <div id="front">
-      <small>Preço da etiqueta</small>
-      <div class="price">R$ 29,90</div>
-      <button type="button" data-flip>Ver o que não está escrito</button>
-    </div>
-    <div id="back" hidden>
-      <small>O que a etiqueta não mostra</small>
+    <div id="front"><small>Preço da etiqueta</small><div class="price">R$ 29,90</div><button type="button" data-flip>Ver o que não está escrito</button></div>
+    <div id="back" hidden><small>O que a etiqueta não mostra</small>
       <ul>
-        <li><svg width="22" height="22" style="color:var(--river)"><use href="#i-drop"/></svg>Água gasta e rios poluídos</li>
-        <li><svg width="22" height="22" style="color:var(--dye)"><use href="#i-people"/></svg>Trabalho mal pago</li>
-        <li><svg width="22" height="22" style="color:var(--leaf)"><use href="#i-bin"/></svg>Descarte depois de poucos usos</li>
+        <li><svg width="22" height="22" style="color:var(--cyan)"><use href="#i-drop"/></svg>Água gasta e rios poluídos</li>
+        <li><svg width="22" height="22" style="color:var(--pink)"><use href="#i-people"/></svg>Trabalho mal pago</li>
+        <li><svg width="22" height="22" style="color:var(--green)"><use href="#i-bin"/></svg>Descarte depois de poucos usos</li>
       </ul>
-      <button type="button" data-flip>Voltar ao preço</button>
-    </div>
+      <button type="button" data-flip>Voltar ao preço</button></div>
   </div>
-</div>
+</div></div>
 
 <section id="problema"><div class="wrap">
   <h2>O problema em 3 pontos</h2>
   <p class="lead">Fast Fashion é copiar tendências rápido e vender barato, para você comprar sempre de novo.</p>
   <div class="grid">
-    <div class="pain"><div class="ic" style="background:var(--river)"><svg width="30" height="30" style="color:#fff"><use href="#i-drop"/></svg></div><div><h3>Natureza</h3><p>Tingimento polui rios. Roupas descartadas formam montanhas, como no Atacama.</p></div></div>
-    <div class="pain"><div class="ic" style="background:var(--dye)"><svg width="30" height="30" style="color:#fff"><use href="#i-people"/></svg></div><div><h3>Pessoas</h3><p>Salários baixos e riscos. O Rana Plaza, em 2013, matou mais de mil trabalhadores.</p></div></div>
-    <div class="pain"><div class="ic" style="background:var(--leaf)"><svg width="30" height="30" style="color:#fff"><use href="#i-bin"/></svg></div><div><h3>Lixo</h3><p>Menos de 1% das roupas vira roupa nova, segundo a Ellen MacArthur Foundation.</p></div></div>
+    <div class="pain" style="--c:var(--cyan)"><div class="ic" style="background:var(--cyan)"><svg width="30" height="30"><use href="#i-drop"/></svg></div><h3>Natureza</h3><p>O tingimento polui rios e roupas descartadas formam montanhas, como no deserto do Atacama.</p></div>
+    <div class="pain" style="--c:var(--pink)"><div class="ic" style="background:var(--pink)"><svg width="30" height="30"><use href="#i-people"/></svg></div><h3>Pessoas</h3><p>Salários baixos e riscos no trabalho. O desabamento do Rana Plaza, em 2013, matou</p><div class="big">+1.100</div></div>
+    <div class="pain" style="--c:var(--green)"><div class="ic" style="background:var(--green)"><svg width="30" height="30"><use href="#i-bin"/></svg></div><h3>Lixo</h3><p>Das roupas descartadas, a parcela reciclada em roupas novas é de menos de</p><div class="big">1%</div></div>
   </div>
 </div></section>
 
-<section id="solucoes"><div class="wrap">
+<section id="solucoes" class="band"><div class="wrap">
   <h2>As soluções</h2>
-  <p class="lead">Mudar exige ação em três níveis ao mesmo tempo.</p>
+  <p class="lead">Mudar exige ação em três níveis ao mesmo tempo. Abra cada cartão para ver um exemplo.</p>
   <div class="cards">
-    <article class="card" style="--c:var(--dye)"><div class="ic"><svg width="38" height="38" style="color:#fff"><use href="#i-people"/></svg></div><h3>Consumidor</h3>
-      <ul><li>Comprar menos e melhor</li><li>Brechós, trocas e aluguel</li><li>Consertar e usar por mais tempo</li></ul></article>
-    <article class="card" style="--c:var(--river)"><div class="ic"><svg width="38" height="38" style="color:#fff"><use href="#i-factory"/></svg></div><h3>Indústria</h3>
-      <ul><li>Economia circular</li><li>Materiais reciclados e orgânicos</li><li>Cadeia de produção transparente</li></ul></article>
-    <article class="card" style="--c:var(--leaf)"><div class="ic"><svg width="38" height="38" style="color:#fff"><use href="#i-gov"/></svg></div><h3>Governo e sociedade</h3>
-      <ul><li>Marca responde pelo descarte</li><li>Fiscalização do trabalho</li><li>Incentivo à reciclagem têxtil</li></ul></article>
+    <article class="card" style="--c:var(--pink)"><div class="top"><div class="ic"><svg width="36" height="36"><use href="#i-people"/></svg></div><h3>Consumidor</h3></div>
+      <ul><li>Comprar menos e melhor</li><li>Brechós, trocas e aluguel</li><li>Consertar e usar por mais tempo</li></ul>
+      <details><summary>Exemplo prático</summary><p>Antes de comprar, pergunte: vou usar esta peça pelo menos 30 vezes?</p></details></article>
+    <article class="card" style="--c:var(--cyan)"><div class="top"><div class="ic"><svg width="36" height="36"><use href="#i-factory"/></svg></div><h3>Indústria</h3></div>
+      <ul><li>Economia circular</li><li>Materiais reciclados e orgânicos</li><li>Cadeia de produção transparente</li></ul>
+      <details><summary>Exemplo prático</summary><p>Marcas que recolhem peças usadas para consertar, revender ou reciclar.</p></details></article>
+    <article class="card" style="--c:var(--green)"><div class="top"><div class="ic"><svg width="36" height="36"><use href="#i-gov"/></svg></div><h3>Governo e sociedade</h3></div>
+      <ul><li>Marca responde pelo descarte</li><li>Fiscalização do trabalho</li><li>Incentivo à reciclagem têxtil</li></ul>
+      <details><summary>Exemplo prático</summary><p>Leis de responsabilidade estendida, em que a empresa cuida do fim de vida do produto.</p></details></article>
   </div>
-  <h3 style="margin:3rem 0 1rem;font-size:1.5rem">Cada problema, uma resposta</h3>
+  <h3 style="margin:3rem 0 0;font-size:1.5rem">Cada problema, uma resposta</h3>
   <div class="pairs">
-    <div class="pair" style="--c:var(--dye)"><div class="p">Excesso de roupas</div><div class="arr">→</div><div class="s">Comprar menos e escolher peças duráveis</div></div>
-    <div class="pair" style="--c:var(--river)"><div class="p">Rios poluídos</div><div class="arr">→</div><div class="s">Tingimento limpo e controle de efluentes</div></div>
-    <div class="pair" style="--c:var(--leaf)"><div class="p">Trabalho precário</div><div class="arr">→</div><div class="s">Salário justo e fiscalização</div></div>
-    <div class="pair" style="--c:var(--river)"><div class="p">Lixo têxtil</div><div class="arr">→</div><div class="s">Reuso, reciclagem e responsabilidade da marca</div></div>
+    <div class="pair" style="--c:var(--pink)"><div class="p">Excesso de roupas</div><div class="arr">→</div><div class="s">Comprar menos e escolher peças duráveis</div></div>
+    <div class="pair" style="--c:var(--cyan)"><div class="p">Rios poluídos</div><div class="arr">→</div><div class="s">Tingimento limpo e controle de efluentes</div></div>
+    <div class="pair" style="--c:var(--green)"><div class="p">Trabalho precário</div><div class="arr">→</div><div class="s">Salário justo e fiscalização</div></div>
+    <div class="pair" style="--c:var(--sun)"><div class="p">Lixo têxtil</div><div class="arr">→</div><div class="s" style="color:#0B1437">Reuso, reciclagem e responsabilidade da marca</div></div>
   </div>
 </div></section>
 
@@ -168,7 +197,22 @@ footer{padding:2.2rem 0 3.5rem;border-top:1px solid var(--line);font-size:.95rem
   </div>
 </div></section>
 
-<section id="agir"><div class="wrap">
+<section id="quiz" style="padding-top:0"><div class="wrap">
+  <h2>Mito ou verdade?</h2>
+  <p class="lead">Teste o que você aprendeu.</p>
+  <div class="quiz" aria-live="polite">
+    <div id="qbody">
+      <div class="qmeta" id="qmeta"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="qopts"><button type="button" data-a="1">Verdade</button><button type="button" data-a="0">Mito</button></div>
+      <p class="qfb" id="qfb"></p>
+      <button type="button" class="btn qnext" id="qnext" hidden>Próxima</button>
+    </div>
+    <div id="qend" hidden><div class="qtext" id="qres"></div><button type="button" class="btn" id="qrestart">Jogar de novo</button></div>
+  </div>
+</div></section>
+
+<section id="agir" style="padding-top:0"><div class="wrap">
   <h2>Comece pelo seu armário</h2>
   <p class="lead">Marque o que você quer fazer neste mês.</p>
   <ul class="check" id="check">
@@ -178,34 +222,73 @@ footer{padding:2.2rem 0 3.5rem;border-top:1px solid var(--line);font-size:.95rem
     <li><label><input type="checkbox"><span>Doar o que não uso mais</span></label></li>
     <li><label><input type="checkbox"><span>Ler a etiqueta e escolher o tecido antes do preço</span></label></li>
   </ul>
-  <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+  <div class="meter" aria-hidden="true"><i id="fill"></i></div>
   <div id="score" aria-live="polite">0 de 5 ações marcadas</div>
 </div></section>
 </main>
 
-<footer><div class="wrap">Fontes para aprofundar: Ellen MacArthur Foundation, Fashion Revolution, WWF e ONU Meio Ambiente. Os números são estimativas e variam entre estudos.<p style="margin:1.2rem 0 0;font-family:var(--head);font-weight:800;font-size:1.05rem;color:var(--ink)">Feito por Kevin, Lucas, Victor e Filipe.</p></div></footer>
+<footer><div class="wrap">
+  Fontes para aprofundar: Ellen MacArthur Foundation, Fashion Revolution, WWF e ONU Meio Ambiente. Os números são estimativas e variam entre estudos.
+  <strong>Feito por Kevin, Lucas, Victor e Filipe.</strong>
+</div></footer>
 
 <script>
 (function(){
-  var f=document.getElementById('front'),b=document.getElementById('back');
+  var $=function(i){return document.getElementById(i)};
+  /* etiqueta */
   document.querySelectorAll('[data-flip]').forEach(function(x){x.addEventListener('click',function(){
-    var sb=b.hidden;b.hidden=!sb;f.hidden=sb;(sb?b:f).querySelector('button').focus();});});
-  function brl(n){return 'R$ '+n.toFixed(2).replace('.',',');}
-  var pr=document.getElementById('pr'),us=document.getElementById('us');
-  function calc(){
-    var p=+pr.value,u=+us.value,v=p/u;
-    document.getElementById('prv').textContent='R$ '+p;
-    document.getElementById('usv').textContent=u;
-    document.getElementById('cpu').textContent=brl(v);
-    document.getElementById('msg').textContent=u<10?'por uso. Poucos usos deixam a peça cara.':'por uso. Quanto mais você usa, menos ela custa.';
+    var sb=$('back').hidden;$('back').hidden=!sb;$('front').hidden=sb;($(sb?'back':'front')).querySelector('button').focus();});});
+  /* tema */
+  var root=document.documentElement,tb=$('theme');
+  var dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  function setTheme(d){dark=d;root.setAttribute('data-theme',d?'dark':'light');tb.textContent=d?'Modo claro':'Modo escuro';tb.setAttribute('aria-pressed',d);}
+  setTheme(dark);tb.addEventListener('click',function(){setTheme(!dark)});
+  /* progresso e menu ativo */
+  var prog=$('prog');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?window.scrollY/h*100:0)+'%';
+  },{passive:true});
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)});}
+    })},{rootMargin:'-40% 0px -55% 0px'});
+    links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)io.observe(s)});
   }
+  /* calculadora */
+  function brl(n){return 'R$ '+n.toFixed(2).replace('.',',');}
+  var pr=$('pr'),us=$('us');
+  function calc(){var p=+pr.value,u=+us.value;
+    $('prv').textContent='R$ '+p;$('usv').textContent=u;$('cpu').textContent=brl(p/u);
+    $('msg').textContent=u<10?'por uso. Poucos usos deixam a peça cara.':'por uso. Quanto mais você usa, menos ela custa.';}
   pr.addEventListener('input',calc);us.addEventListener('input',calc);calc();
-  var boxes=document.querySelectorAll('#check input');
-  boxes.forEach(function(x){x.addEventListener('change',function(){
+  /* quiz */
+  var Q=[
+    ['Roupa barata sempre sai mais econômica.',0,'Mito. Se você usa poucas vezes, o custo por uso fica alto.'],
+    ['A maior parte das roupas vira roupa nova na reciclagem.',0,'Mito. Menos de 1% é reciclada em roupas novas.'],
+    ['Consertar e trocar roupas ajuda a reduzir o lixo têxtil.',1,'Verdade. Cada uso a mais adia o descarte.'],
+    ['Consumidores não têm nenhum poder sobre as marcas.',0,'Mito. Perguntar e escolher marcas transparentes pressiona o setor.']
+  ],i=0,pts=0,done=false;
+  function show(){done=false;$('qmeta').textContent='Pergunta '+(i+1)+' de '+Q.length;$('qtext').textContent=Q[i][0];
+    $('qfb').textContent='';$('qnext').hidden=true;
+    document.querySelectorAll('.qopts button').forEach(function(b){b.disabled=false;b.className='';});}
+  document.querySelectorAll('.qopts button').forEach(function(b){b.addEventListener('click',function(){
+    if(done)return;done=true;var ok=(+b.dataset.a===Q[i][1]);if(ok)pts++;
+    b.className=ok?'ok':'no';
+    document.querySelectorAll('.qopts button').forEach(function(x){x.disabled=true;if(+x.dataset.a===Q[i][1])x.className='ok';});
+    $('qfb').textContent=(ok?'Certo! ':'Quase! ')+Q[i][2];
+    $('qnext').textContent=i<Q.length-1?'Próxima':'Ver resultado';$('qnext').hidden=false;$('qnext').focus();});});
+  $('qnext').addEventListener('click',function(){i++;
+    if(i<Q.length){show();}else{$('qbody').hidden=true;$('qend').hidden=false;
+      $('qres').textContent='Você acertou '+pts+' de '+Q.length+(pts===Q.length?'. Parabéns!':'. Releia as soluções e tente de novo.');}});
+  $('qrestart').addEventListener('click',function(){i=0;pts=0;$('qend').hidden=true;$('qbody').hidden=false;show();});
+  show();
+  /* checklist */
+  document.querySelectorAll('#check input').forEach(function(x){x.addEventListener('change',function(){
     var n=document.querySelectorAll('#check input:checked').length;
-    document.getElementById('fill').style.width=(n*20)+'%';
-    document.getElementById('score').textContent=n+' de 5 ações marcadas'+(n===5?'. Seu armário agradece!':'');
-  });});
+    $('fill').style.width=(n*20)+'%';
+    $('score').textContent=n+' de 5 ações marcadas'+(n===5?'. Seu armário agradece!':'');});});
 })();
 </script>
 </body>
