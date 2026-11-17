@@ -8,257 +8,204 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#F5F6F4; --surface:#FFFFFF; --ink:#14213D; --muted:#4B5570;
-  --dye:#C4235F; --line:#D5D9D2; --river:#2B5C8A;
-  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --body:"Source Serif 4",Georgia,serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0F1524; --surface:#18203A; --ink:#EEF0F5; --muted:#A9B1C7;
-    --dye:#FF6BA0; --line:#2B3555; --river:#7FB2E5; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0F1524; --surface:#18203A; --ink:#EEF0F5; --muted:#A9B1C7;
-  --dye:#FF6BA0; --line:#2B3555; --river:#7FB2E5; color-scheme:dark;
-}
+:root{--bg:#F5F6F4;--surface:#fff;--ink:#14213D;--muted:#4B5570;--dye:#C4235F;--river:#2B5C8A;--leaf:#3F7D58;--line:#D5D9D2;
+--head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Source Serif 4",Georgia,serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F1524;--surface:#18203A;--ink:#EEF0F5;--muted:#A9B1C7;--dye:#FF6BA0;--river:#7FB2E5;--leaf:#6FCB93;--line:#2B3555;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1524;--surface:#18203A;--ink:#EEF0F5;--muted:#A9B1C7;--dye:#FF6BA0;--river:#7FB2E5;--leaf:#6FCB93;--line:#2B3555;color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.7}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.65}
 h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0}
-a{color:var(--dye)}
 :focus-visible{outline:3px solid var(--dye);outline-offset:3px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
-section{padding:4.5rem 0;border-top:1px solid var(--line)}
-section h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-bottom:1.25rem;max-width:20ch}
-p{max-width:62ch;margin:0 0 1rem}
-nav{display:flex;gap:1.25rem;flex-wrap:wrap;padding:1.1rem 0;font-family:var(--head);font-weight:500;font-size:1rem}
-nav a{color:var(--ink);text-decoration:none}
-nav a:hover{color:var(--dye)}
+section{padding:4rem 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin-bottom:.8rem}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 2rem}
+nav{display:flex;gap:1.25rem;flex-wrap:wrap;padding:1.1rem 0;font-family:var(--head);font-weight:500}
+nav a{color:var(--ink);text-decoration:none}nav a:hover{color:var(--dye)}
+[hidden]{display:none!important}
+svg{display:block}
 
-/* Hero */
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center;padding:3rem 0 5rem;border:0}
-.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.02em}
-.hero p{font-size:1.25rem;color:var(--muted);margin-top:1.5rem}
-.tag{position:relative;background:var(--surface);border:2px solid var(--ink);border-radius:6px 6px 18px 18px;padding:3.2rem 1.5rem 1.5rem;
-  transform:rotate(3deg);box-shadow:8px 8px 0 var(--dye);font-family:var(--head)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center;padding:2.5rem 0 4.5rem;border:0}
+.hero h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;letter-spacing:-.02em}
+.hero p{font-size:1.25rem;color:var(--muted);margin:1.4rem 0 1.6rem;max-width:44ch}
+.btn{display:inline-block;font-family:var(--head);font-weight:800;background:var(--dye);color:#fff;text-decoration:none;padding:.85rem 1.4rem;border-radius:999px}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.tag{position:relative;background:var(--surface);border:2px solid var(--ink);border-radius:6px 6px 18px 18px;padding:3.2rem 1.5rem 1.5rem;transform:rotate(3deg);box-shadow:8px 8px 0 var(--dye);font-family:var(--head)}
 .tag::before{content:"";position:absolute;top:1rem;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:2px solid var(--ink);background:var(--bg)}
 .tag small{display:block;font-size:.85rem;color:var(--muted);font-weight:500}
 .price{font-size:3.4rem;font-weight:800;line-height:1;margin:.3rem 0 1rem}
-.tag ul{list-style:none;margin:0 0 1.2rem;padding:0;font-family:var(--body);font-size:1rem;line-height:1.45}
-.tag li{padding:.45rem 0;border-bottom:1px dashed var(--line)}
+.tag ul{list-style:none;margin:0 0 1.2rem;padding:0;font-family:var(--body);font-size:1rem;line-height:1.4}
+.tag li{padding:.45rem 0 .45rem 2rem;border-bottom:1px dashed var(--line);position:relative}
+.tag li svg{position:absolute;left:0;top:.4rem}
 .tag button{font:inherit;font-weight:800;font-size:.95rem;background:var(--ink);color:var(--bg);border:0;padding:.7rem 1rem;border-radius:999px;cursor:pointer}
 .tag button:hover{background:var(--dye);color:#fff}
-[hidden]{display:none!important}
 
-/* Dados */
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:2rem}
-.fact{border-left:4px solid var(--river);padding-left:1rem}
-.fact strong{display:block;font-family:var(--head);font-size:1.5rem;line-height:1.15;margin-bottom:.35rem}
-.fact span{font-size:1rem;color:var(--muted);line-height:1.5;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem}
+.pain{display:flex;gap:1rem;align-items:flex-start}
+.pain .ic{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--river)}
+.pain h3{font-size:1.2rem;margin-bottom:.2rem}.pain p{margin:0;font-size:1rem;color:var(--muted);line-height:1.45}
 
-/* Impactos */
-.impacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem}
-.impacts h3{font-size:1.4rem;margin-bottom:.6rem;color:var(--dye)}
-.impacts p{font-size:1.05rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:14px;padding:1.6rem}
+.card .ic{width:72px;height:72px;border-radius:50%;background:var(--c);display:grid;place-items:center;margin:0 auto 1rem}
+.card h3{text-align:center;font-size:1.4rem;margin-bottom:1rem}
+.card ul{list-style:none;margin:0;padding:0;font-size:1.02rem;line-height:1.4}
+.card li{display:flex;gap:.7rem;padding:.55rem 0}
+.card li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--c);margin-top:.5rem}
 
-/* Soluções */
-.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0}
-.tabs button{font:inherit;font-family:var(--head);font-weight:500;font-size:1rem;padding:.65rem 1.1rem;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
-.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.75rem}
-.panel ul{margin:0;padding-left:1.2rem}
-.panel li{margin-bottom:.7rem;max-width:62ch}
+.pairs{display:grid;gap:.7rem}
+.pair{display:grid;grid-template-columns:1fr auto 1.4fr;gap:.8rem;align-items:stretch}
+.pair div{padding:.9rem 1.1rem;border-radius:10px;font-family:var(--head);font-weight:500;display:flex;align-items:center}
+.pair .p{background:var(--surface);border:1px solid var(--line)}
+.pair .s{background:var(--c);color:#fff}
+.pair .arr{align-self:center;padding:0;font-size:1.6rem;color:var(--c);background:none}
+@media (max-width:640px){.pair{grid-template-columns:1fr}.pair .arr{transform:rotate(90deg);justify-self:center}}
 
-/* Checklist */
-.check{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.6rem;max-width:62ch}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.calc label{display:block;font-family:var(--head);font-weight:500;margin-bottom:1rem}
+.calc input[type=range]{width:100%;accent-color:var(--dye)}
+.calc output{font-weight:800;color:var(--dye)}
+.res{border-left:4px solid var(--dye);padding-left:1.2rem;align-self:center}
+.res strong{font-family:var(--head);font-size:2.6rem;display:block;line-height:1}
+.res span{color:var(--muted);font-size:1rem}
+@media (max-width:700px){.calc{grid-template-columns:1fr;gap:1.2rem}}
+
+.check{list-style:none;padding:0;margin:0;display:grid;gap:.6rem;max-width:60ch}
 .check label{display:flex;gap:.8rem;align-items:flex-start;cursor:pointer}
 .check input{width:1.3rem;height:1.3rem;margin-top:.3rem;accent-color:var(--dye);flex:none}
 .check input:checked + span{text-decoration:line-through;color:var(--muted)}
-#score{font-family:var(--head);font-weight:800;font-size:1.2rem;margin-top:1.2rem}
-
-footer{padding:2.5rem 0 3.5rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
-footer p{max-width:70ch}
-
-@media (max-width:760px){
-  .hero{grid-template-columns:1fr;gap:2.5rem;padding-top:1.5rem}
-  .tag{transform:rotate(1.5deg);margin-right:8px}
-  section{padding:3.2rem 0}
-}
-@media (prefers-reduced-motion:no-preference){
-  .tag{animation:swing 1.4s ease-out 1}
-  @keyframes swing{0%{transform:rotate(-8deg)}60%{transform:rotate(5deg)}100%{transform:rotate(3deg)}}
-}
+.bar{height:12px;background:var(--line);border-radius:99px;margin:1.4rem 0 .6rem;max-width:60ch;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--leaf);transition:width .3s}
+#score{font-family:var(--head);font-weight:800}
+footer{padding:2.2rem 0 3.5rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:2.5rem;padding-top:1rem}.tag{transform:rotate(1.5deg);margin-right:8px}section{padding:3rem 0}}
+@media (prefers-reduced-motion:no-preference){.tag{animation:swing 1.4s ease-out 1}@keyframes swing{0%{transform:rotate(-8deg)}60%{transform:rotate(5deg)}100%{transform:rotate(3deg)}}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
 </style>
 </head>
 <body>
-<header class="wrap">
-  <nav aria-label="Principal">
-    <a href="#oque">O que é</a>
-    <a href="#impactos">Impactos</a>
-    <a href="#solucoes">Soluções</a>
-    <a href="#agir">Comece hoje</a>
-  </nav>
-</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-drop" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C9 7 5 10.5 5 15a7 7 0 0014 0c0-4.500-4-8-7-13z"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="currentColor"/><path fill="currentColor" d="M4 21c0-5 4-7 8-7s8 2 8 7z"/></symbol>
+  <symbol id="i-bin" viewBox="0 0 24 24"><path fill="currentColor" d="M5 7h14l-1.200 14H6.200zM9 3h6l1 2H8z"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path fill="currentColor" d="M2 21V10l6 4v-4l6 4v-4l6 4V5h3v16z" transform="scale(.9) translate(1 1)"/></symbol>
+  <symbol id="i-gov" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L2 8v2h20V8zM4 11v8h3v-8zm5 0v8h3v-8zm5 0v8h3v-8zM2 20v2h20v-2z" transform="translate(1 0) scale(.92)"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6a2 2 0 012-2h13v3H5v1h16v11a2 2 0 01-2 2H5a2 2 0 01-2-2zm14 8a1.500 1.500 0 100 3 1.500 1.500 0 000-3z"/></symbol>
+</svg>
+
+<header class="wrap"><nav aria-label="Principal">
+  <a href="#problema">O problema</a><a href="#solucoes">Soluções</a><a href="#calculadora">Calculadora</a><a href="#agir">Comece hoje</a>
+</nav></header>
 
 <main>
-<div class="wrap">
-  <div class="hero">
-    <div>
-      <h1>Fast Fashion: o custo que a etiqueta não mostra</h1>
-      <p>Roupa barata, coleções que mudam toda semana e um armário cheio. Veja quem paga a conta e o que dá para fazer a respeito.</p>
+<div class="wrap hero">
+  <div>
+    <h1>Fast Fashion: o custo que a etiqueta não mostra</h1>
+    <p>Roupa barata tem um preço escondido. Veja o problema em poucos passos e, principalmente, o que dá para fazer.</p>
+    <a class="btn" href="#solucoes">Ver as soluções</a>
+  </div>
+  <div class="tag" aria-live="polite">
+    <div id="front">
+      <small>Preço da etiqueta</small>
+      <div class="price">R$ 29,90</div>
+      <button type="button" data-flip>Ver o que não está escrito</button>
     </div>
-    <div class="tag" aria-live="polite">
-      <div id="tag-front">
-        <small>Preço da etiqueta</small>
-        <div class="price">R$ 29,90</div>
-        <button type="button" data-flip>Ver o que não está escrito</button>
-      </div>
-      <div id="tag-back" hidden>
-        <small>O que a etiqueta não mostra</small>
-        <ul>
-          <li>Água usada no cultivo e no tingimento</li>
-          <li>Rios poluídos perto das fábricas</li>
-          <li>Costureiras com salários baixos e jornadas longas</li>
-          <li>Peça descartada depois de poucos usos</li>
-        </ul>
-        <button type="button" data-flip>Voltar ao preço</button>
-      </div>
+    <div id="back" hidden>
+      <small>O que a etiqueta não mostra</small>
+      <ul>
+        <li><svg width="22" height="22" style="color:var(--river)"><use href="#i-drop"/></svg>Água gasta e rios poluídos</li>
+        <li><svg width="22" height="22" style="color:var(--dye)"><use href="#i-people"/></svg>Trabalho mal pago</li>
+        <li><svg width="22" height="22" style="color:var(--leaf)"><use href="#i-bin"/></svg>Descarte depois de poucos usos</li>
+      </ul>
+      <button type="button" data-flip>Voltar ao preço</button>
     </div>
   </div>
 </div>
 
-<section id="oque">
-  <div class="wrap">
-    <h2>O que é Fast Fashion</h2>
-    <p>É o modelo de produção de moda que copia tendências rapidamente e as coloca nas lojas a preços baixos. Em vez de duas ou quatro coleções por ano, algumas marcas lançam novidades quase toda semana.</p>
-    <p>O objetivo é fazer a pessoa comprar mais vezes. A roupa é feita para ser usada poucas vezes, e isso só funciona porque grande parte dos custos ambientais e humanos não entra no preço.</p>
-    <div class="facts">
-      <div class="fact"><strong>Produção dobrou</strong><span>A produção mundial de roupas mais que dobrou entre 2000 e 2015, segundo a Ellen MacArthur Foundation.</span></div>
-      <div class="fact"><strong>Menos de 1%</strong><span>É a parcela de roupas recicladas em novas roupas, segundo a mesma organização.</span></div>
-      <div class="fact"><strong>Cerca de 2.700 litros</strong><span>É a água estimada para produzir uma camiseta de algodão, segundo a WWF.</span></div>
-    </div>
+<section id="problema"><div class="wrap">
+  <h2>O problema em 3 pontos</h2>
+  <p class="lead">Fast Fashion é copiar tendências rápido e vender barato, para você comprar sempre de novo.</p>
+  <div class="grid">
+    <div class="pain"><div class="ic" style="background:var(--river)"><svg width="30" height="30" style="color:#fff"><use href="#i-drop"/></svg></div><div><h3>Natureza</h3><p>Tingimento polui rios. Roupas descartadas formam montanhas, como no Atacama.</p></div></div>
+    <div class="pain"><div class="ic" style="background:var(--dye)"><svg width="30" height="30" style="color:#fff"><use href="#i-people"/></svg></div><div><h3>Pessoas</h3><p>Salários baixos e riscos. O Rana Plaza, em 2013, matou mais de mil trabalhadores.</p></div></div>
+    <div class="pain"><div class="ic" style="background:var(--leaf)"><svg width="30" height="30" style="color:#fff"><use href="#i-bin"/></svg></div><div><h3>Lixo</h3><p>Menos de 1% das roupas vira roupa nova, segundo a Ellen MacArthur Foundation.</p></div></div>
   </div>
-</section>
+</div></section>
 
-<section id="impactos">
-  <div class="wrap">
-    <h2>Quem paga a conta</h2>
-    <div class="impacts">
-      <article>
-        <h3>Meio ambiente</h3>
-        <p>O tingimento e o acabamento lançam efluentes em rios, e tecidos sintéticos soltam microplásticos a cada lavagem. Roupas descartadas se acumulam em aterros e até em desertos, como o Atacama, no Chile.</p>
-      </article>
-      <article>
-        <h3>Trabalhadores</h3>
-        <p>Muitas peças saem de fábricas com salários baixos e jornadas exaustivas. Em 2013, o desabamento do edifício Rana Plaza, em Bangladesh, matou mais de mil trabalhadores do setor têxtil.</p>
-      </article>
-      <article>
-        <h3>Consumidores</h3>
-        <p>A qualidade menor faz a peça durar pouco. Gastar um pouco a cada semana parece barato, mas soma muito ao fim do ano e gera lixo em ritmo igual.</p>
-      </article>
-    </div>
+<section id="solucoes"><div class="wrap">
+  <h2>As soluções</h2>
+  <p class="lead">Mudar exige ação em três níveis ao mesmo tempo.</p>
+  <div class="cards">
+    <article class="card" style="--c:var(--dye)"><div class="ic"><svg width="38" height="38" style="color:#fff"><use href="#i-people"/></svg></div><h3>Consumidor</h3>
+      <ul><li>Comprar menos e melhor</li><li>Brechós, trocas e aluguel</li><li>Consertar e usar por mais tempo</li></ul></article>
+    <article class="card" style="--c:var(--river)"><div class="ic"><svg width="38" height="38" style="color:#fff"><use href="#i-factory"/></svg></div><h3>Indústria</h3>
+      <ul><li>Economia circular</li><li>Materiais reciclados e orgânicos</li><li>Cadeia de produção transparente</li></ul></article>
+    <article class="card" style="--c:var(--leaf)"><div class="ic"><svg width="38" height="38" style="color:#fff"><use href="#i-gov"/></svg></div><h3>Governo e sociedade</h3>
+      <ul><li>Marca responde pelo descarte</li><li>Fiscalização do trabalho</li><li>Incentivo à reciclagem têxtil</li></ul></article>
   </div>
-</section>
+  <h3 style="margin:3rem 0 1rem;font-size:1.5rem">Cada problema, uma resposta</h3>
+  <div class="pairs">
+    <div class="pair" style="--c:var(--dye)"><div class="p">Excesso de roupas</div><div class="arr">→</div><div class="s">Comprar menos e escolher peças duráveis</div></div>
+    <div class="pair" style="--c:var(--river)"><div class="p">Rios poluídos</div><div class="arr">→</div><div class="s">Tingimento limpo e controle de efluentes</div></div>
+    <div class="pair" style="--c:var(--leaf)"><div class="p">Trabalho precário</div><div class="arr">→</div><div class="s">Salário justo e fiscalização</div></div>
+    <div class="pair" style="--c:var(--river)"><div class="p">Lixo têxtil</div><div class="arr">→</div><div class="s">Reuso, reciclagem e responsabilidade da marca</div></div>
+  </div>
+</div></section>
 
-<section id="solucoes">
-  <div class="wrap">
-    <h2>O que pode mudar</h2>
-    <p>Não existe uma solução única. As mudanças funcionam melhor quando acontecem nos três níveis ao mesmo tempo.</p>
-    <div class="tabs" role="tablist" aria-label="Soluções por nível">
-      <button role="tab" id="t0" aria-selected="true" aria-controls="p0">Consumidores</button>
-      <button role="tab" id="t1" aria-selected="false" aria-controls="p1" tabindex="-1">Indústria</button>
-      <button role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1">Governo e sociedade</button>
+<section id="calculadora"><div class="wrap">
+  <h2>Barato mesmo?</h2>
+  <p class="lead">O que importa é o custo por uso. Mexa nos controles e compare.</p>
+  <div class="calc">
+    <div>
+      <label for="pr">Preço da peça: <output id="prv">R$ 30</output></label>
+      <input id="pr" type="range" min="10" max="300" step="5" value="30">
+      <label for="us" style="margin-top:1.2rem">Quantas vezes você vai usar: <output id="usv">5</output></label>
+      <input id="us" type="range" min="1" max="100" step="1" value="5">
     </div>
-    <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0">
-      <ul>
-        <li>Compre menos e escolha peças duráveis, que combinem com o que você já tem.</li>
-        <li>Prefira brechós, trocas entre amigos e aluguel de roupas.</li>
-        <li>Conserte, customize e lave com cuidado para a peça durar mais.</li>
-        <li>Pergunte quem fez a roupa. Pressão de consumidores muda o comportamento das marcas.</li>
-      </ul>
-    </div>
-    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
-      <ul>
-        <li>Adotar economia circular: desenhar peças para durar, serem consertadas e recicladas.</li>
-        <li>Usar materiais reciclados, orgânicos ou de menor impacto.</li>
-        <li>Publicar a lista de fornecedores e os resultados de auditorias.</li>
-        <li>Pagar salários justos e garantir segurança nas fábricas.</li>
-      </ul>
-    </div>
-    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-      <ul>
-        <li>Criar leis de responsabilidade estendida: a marca responde pelo destino da peça depois da venda.</li>
-        <li>Reforçar a fiscalização trabalhista na cadeia têxtil.</li>
-        <li>Incentivar coleta seletiva e reciclagem de têxteis.</li>
-        <li>Investir em educação sobre consumo consciente nas escolas.</li>
-      </ul>
-    </div>
+    <div class="res" aria-live="polite"><strong id="cpu">R$ 6,00</strong><span id="msg">por uso</span></div>
   </div>
-</section>
+</div></section>
 
-<section id="agir">
-  <div class="wrap">
-    <h2>Comece pelo seu armário</h2>
-    <p>Marque o que você já faz ou quer fazer neste mês.</p>
-    <ul class="check" id="check">
-      <li><label><input type="checkbox"><span>Esperar 30 dias antes de comprar algo por impulso</span></label></li>
-      <li><label><input type="checkbox"><span>Visitar um brechó ou uma feira de troca</span></label></li>
-      <li><label><input type="checkbox"><span>Consertar uma peça parada no armário</span></label></li>
-      <li><label><input type="checkbox"><span>Doar o que não uso mais, em bom estado</span></label></li>
-      <li><label><input type="checkbox"><span>Ler a etiqueta e escolher o tecido antes do preço</span></label></li>
-    </ul>
-    <div id="score" aria-live="polite">0 de 5 ações marcadas</div>
-  </div>
-</section>
+<section id="agir"><div class="wrap">
+  <h2>Comece pelo seu armário</h2>
+  <p class="lead">Marque o que você quer fazer neste mês.</p>
+  <ul class="check" id="check">
+    <li><label><input type="checkbox"><span>Esperar 30 dias antes de comprar por impulso</span></label></li>
+    <li><label><input type="checkbox"><span>Visitar um brechó ou feira de troca</span></label></li>
+    <li><label><input type="checkbox"><span>Consertar uma peça parada</span></label></li>
+    <li><label><input type="checkbox"><span>Doar o que não uso mais</span></label></li>
+    <li><label><input type="checkbox"><span>Ler a etiqueta e escolher o tecido antes do preço</span></label></li>
+  </ul>
+  <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+  <div id="score" aria-live="polite">0 de 5 ações marcadas</div>
+</div></section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>Fontes para aprofundar: Ellen MacArthur Foundation (<em>A New Textiles Economy</em>), Fashion Revolution, WWF e relatórios da ONU sobre moda e meio ambiente. Os números citados são estimativas e podem variar entre estudos.</p>
-  </div>
-</footer>
+<footer><div class="wrap">Fontes para aprofundar: Ellen MacArthur Foundation, Fashion Revolution, WWF e ONU Meio Ambiente. Os números são estimativas e variam entre estudos.</div></footer>
 
 <script>
 (function(){
-  var front=document.getElementById('tag-front'), back=document.getElementById('tag-back');
-  document.querySelectorAll('[data-flip]').forEach(function(b){
-    b.addEventListener('click',function(){
-      var showBack=back.hidden;
-      back.hidden=!showBack; front.hidden=showBack;
-      (showBack?back:front).querySelector('button').focus();
-    });
-  });
-  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
-  function select(i){
-    tabs.forEach(function(t,n){
-      var on=n===i;
-      t.setAttribute('aria-selected',on);
-      t.tabIndex=on?0:-1;
-      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
-    });
-    tabs[i].focus();
+  var f=document.getElementById('front'),b=document.getElementById('back');
+  document.querySelectorAll('[data-flip]').forEach(function(x){x.addEventListener('click',function(){
+    var sb=b.hidden;b.hidden=!sb;f.hidden=sb;(sb?b:f).querySelector('button').focus();});});
+  function brl(n){return 'R$ '+n.toFixed(2).replace('.',',');}
+  var pr=document.getElementById('pr'),us=document.getElementById('us');
+  function calc(){
+    var p=+pr.value,u=+us.value,v=p/u;
+    document.getElementById('prv').textContent='R$ '+p;
+    document.getElementById('usv').textContent=u;
+    document.getElementById('cpu').textContent=brl(v);
+    document.getElementById('msg').textContent=u<10?'por uso. Poucos usos deixam a peça cara.':'por uso. Quanto mais você usa, menos ela custa.';
   }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){select(i)});
-    t.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight')select((i+1)%tabs.length);
-      if(e.key==='ArrowLeft')select((i+tabs.length-1)%tabs.length);
-    });
-  });
-  var boxes=document.querySelectorAll('#check input'), score=document.getElementById('score');
-  boxes.forEach(function(b){
-    b.addEventListener('change',function(){
-      var n=document.querySelectorAll('#check input:checked').length;
-      score.textContent=n+' de 5 ações marcadas'+(n===5?'. Seu armário agradece!':'');
-    });
-  });
+  pr.addEventListener('input',calc);us.addEventListener('input',calc);calc();
+  var boxes=document.querySelectorAll('#check input');
+  boxes.forEach(function(x){x.addEventListener('change',function(){
+    var n=document.querySelectorAll('#check input:checked').length;
+    document.getElementById('fill').style.width=(n*20)+'%';
+    document.getElementById('score').textContent=n+' de 5 ações marcadas'+(n===5?'. Seu armário agradece!':'');
+  });});
 })();
 </script>
 </body>
