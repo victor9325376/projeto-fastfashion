@@ -39,6 +39,11 @@ nav a:hover{color:#fff}nav a.on{background:var(--pink);color:#fff}
 .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center;position:relative;z-index:1}
 .hero h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;letter-spacing:-.02em}
 .hero p{font-size:1.25rem;color:#C9D0EE;margin:1.4rem 0 1.8rem;max-width:44ch}
+.credit{display:inline-block;font-family:var(--head);font-weight:800;font-size:.95rem;background:var(--sun);color:#0B1437;padding:.45rem 1rem;border-radius:999px;margin-bottom:1.2rem}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.member{color:var(--ink);background:var(--surface);border:1px solid var(--line);border-bottom:6px solid var(--c);border-radius:16px;padding:1.6rem 1rem;text-align:center}
+.member .av{width:84px;height:84px;border-radius:50%;background:var(--c);color:#fff;font-family:var(--head);font-weight:800;font-size:2.4rem;display:grid;place-items:center;margin:0 auto .9rem}
+.member h3{font-size:1.35rem}.member p{margin:.2rem 0 0;font-size:.95rem;color:var(--muted)}
 .btn{display:inline-block;font-family:var(--head);font-weight:800;background:var(--sun);color:#0B1437;text-decoration:none;padding:.9rem 1.5rem;border-radius:999px;border:0;cursor:pointer;font-size:1rem}
 .btn:hover{background:#fff}
 .tag{position:relative;background:#fff;color:#0B1437;border:2px solid #0B1437;border-radius:6px 6px 18px 18px;padding:3.2rem 1.5rem 1.5rem;transform:rotate(3deg);box-shadow:8px 8px 0 var(--sun);font-family:var(--head)}
@@ -127,13 +132,14 @@ footer strong{display:block;font-family:var(--head);font-size:1.15rem;color:#fff
 
 <header class="bar"><div class="wrap">
   <span class="logo">Fast Fashion</span>
-  <nav aria-label="Principal"><a href="#problema">Problema</a><a href="#solucoes">Soluções</a><a href="#calculadora">Calculadora</a><a href="#quiz">Quiz</a><a href="#agir">Comece hoje</a></nav>
+  <nav aria-label="Principal"><a href="#problema">Problema</a><a href="#solucoes">Soluções</a><a href="#calculadora">Calculadora</a><a href="#quiz">Quiz</a><a href="#agir">Comece hoje</a><a href="#equipe">Equipe</a></nav>
   <button id="theme" type="button" aria-pressed="false">Modo escuro</button>
 </div></header>
 
 <main>
 <div class="hero"><div class="wrap">
   <div>
+    <div class="credit">Trabalho escolar por Kevin, Lucas, Victor e Fillipe</div>
     <h1>O custo que a etiqueta não mostra</h1>
     <p>Roupa barata tem um preço escondido. Entenda o problema do Fast Fashion e descubra o que cada pessoa pode fazer.</p>
     <a class="btn" href="#solucoes">Ver as soluções</a>
@@ -225,11 +231,21 @@ footer strong{display:block;font-family:var(--head);font-size:1.15rem;color:#fff
   <div class="meter" aria-hidden="true"><i id="fill"></i></div>
   <div id="score" aria-live="polite">0 de 5 ações marcadas</div>
 </div></section>
+<section id="equipe" class="band"><div class="wrap">
+  <h2>Quem fez este trabalho</h2>
+  <p class="lead">Projeto escolar sobre Fast Fashion, criado em grupo.</p>
+  <div class="team">
+    <div class="member" style="--c:var(--pink)"><div class="av" aria-hidden="true">K</div><h3>Kevin</h3><p>Integrante da equipe</p></div>
+    <div class="member" style="--c:var(--cyan)"><div class="av" aria-hidden="true">L</div><h3>Lucas</h3><p>Integrante da equipe</p></div>
+    <div class="member" style="--c:var(--green)"><div class="av" aria-hidden="true">V</div><h3>Victor</h3><p>Integrante da equipe</p></div>
+    <div class="member" style="--c:var(--sun)"><div class="av" aria-hidden="true" style="color:#0B1437">F</div><h3>Fillipe</h3><p>Integrante da equipe</p></div>
+  </div>
+</div></section>
 </main>
 
 <footer><div class="wrap">
   Fontes para aprofundar: Ellen MacArthur Foundation, Fashion Revolution, WWF e ONU Meio Ambiente. Os números são estimativas e variam entre estudos.
-  <strong>Feito por Kevin, Lucas, Victor e Filipe.</strong>
+  <strong>Feito por Kevin, Lucas, Victor e Fillipe.</strong>
 </div></footer>
 
 <script>
